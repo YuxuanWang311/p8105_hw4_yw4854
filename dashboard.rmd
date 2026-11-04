@@ -1,0 +1,103 @@
+---
+title: "NYC Restaurant Inspection Results"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(flexdashboard)
+
+data("rest_inspec")
+
+inspection_data =
+  rest_inspec %>%
+  rename(borough = boro) %>%
+  mutate(
+    score = as.numeric(score),
+    inspection_date = as.Date(
+      substr(as.character(inspection_date), 1, 10)
+    )
+  ) %>%
+  filter(
+    borough %in% c("Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"),
+    !is.na(score),
+    !is.na(inspection_date)
+  ) %>%
+  distinct(camis, inspection_date, .keep_all = TRUE) %>%
+  mutate(year = as.integer(format(inspection_date, "%Y")))
+
+grade_counts =
+  inspection_data %>%
+  filter(grade %in% c("A", "B", "C")) %>%
+  count(borough, grade, name = "n_inspections")
+
+score_by_year =
+  inspection_data %>%
+  group_by(year) %>%
+  summarize(mean_score = mean(score), .groups = "drop")
+
+set.seed(1)
+score_sample =
+  inspection_data %>%
+  slice_sample(n = min(10000, nrow(inspection_data)))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Inspection counts by borough and grade
+
+```{r}
+plot_ly(
+  data = grade_counts,
+  x = ~borough,
+  y = ~n_inspections,
+  color = ~grade,
+  type = "bar"
+) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Borough"),
+    yaxis = list(title = "Number of inspections")
+  )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Inspection scores by borough
+
+```{r}
+plot_ly(
+  data = score_sample,
+  x = ~borough,
+  y = ~score,
+  color = ~borough,
+  type = "box"
+) %>%
+  layout(
+    xaxis = list(title = "Borough"),
+    yaxis = list(title = "Inspection score")
+  )
+```
+
+### Average inspection score by year
+
+```{r}
+plot_ly(
+  data = score_by_year,
+  x = ~year,
+  y = ~mean_score,
+  type = "scatter",
+  mode = "lines+markers"
+) %>%
+  layout(
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Average inspection score")
+  )
+```
