@@ -1,0 +1,15 @@
+---
+title: "Personal Website"
+output: html_document
+---
+### Welcome! 
+
+Hi, I'm Yuxuan Wang.
+
+I am a public health student at Columbia University. I studied biology at Arizona State University and am interested in biostatistics, epidemiology, and clinical research.
+
+This website introduces my background, academic interests, and projects.
+
+Use the navigation bar at the top to explore:
+* [Resume](resume.html): Academic and professional background
+* [Dashboard](dashboard.html): Interactive plotly charts using Instacart data

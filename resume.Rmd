@@ -1,0 +1,33 @@
+# Resume
+
+## Education
+
+**Columbia University**
+Master of Science in Biostatistics (in progress)
+
+**Arizona State University**
+B.S. in Biological Sciences, May 2026
+
+## Research Experience
+
+**An Assessment of COVID-19 and How Demographic Factors Contribute to Susceptibility**  
+August 2023–November 2023
+- Examined how age, gender, and ethnicity were associated with COVID-19 susceptibility and severity.
+- Analyzed genetic data and COVID-19 survey responses from the All of Us Research Program.
+- Developed and tested hypotheses about immune response and age-related susceptibility.
+- Considered how demographic differences relate to health disparities and access to care.
+
+## Internship Experience
+
+**Data Analysis and Shipping Route Optimization Intern**  
+China COSCO Shipping Group Co., Ltd., Nanchang Branch
+Nanchang, China | June 2024–July 2024
+- Compared eight major domestic ports using historical operational indicators, including vessel turnaround and terminal handling efficiency.
+- Contributed to a route evaluation model using more than 15 factors, including stopover locations, shipping time, and fuel consumption.
+- Helped assess route options based on cost, timeliness, and reliability.
+- Used Tableau to create and maintain dashboards for tracking route deviations and container locations.
+
+## Skills
+- **Data analysis:** R coursework, statistical analysis, operational data analysis
+- **Data visualization:** Tableau dashboards
+- **Research:** Working with survey and genetic datasets, developing and evaluating hypotheses
